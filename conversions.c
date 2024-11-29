@@ -82,25 +82,24 @@ return (longueur);
  */
 int afficher_decimal(va_list arguments)
 {
-int partie_entier = va_arg(arguments, int);
-int partie_decimal = va_arg(arguments, int);
+double nombre = va_arg(arguments, double);
+int partie_entier = (int)nombre;
+double partie_decimale = nombre - partie_entier;
+
 int longueur = 0;
 int stock_entier;
 int compteur;
 char espace[50];
+int chiffre;
 
-if (partie_entier == 0 && partie_decimal == 0)
+stock_entier = partie_entier;
+if (partie_entier == 0)
 {
 write(1, "0", 1);
-return (0);
+longueur++;
 }
-if (partie_entier < 0)
+else
 {
-write(1, "-", 1);
-partie_entier = -partie_entier;
-partie_decimal = -partie_decimal;
-}
-stock_entier = partie_entier;
 while (stock_entier > 0)
 {
 stock_entier /= 10;
@@ -109,17 +108,21 @@ longueur++;
 for (compteur = longueur - 1; compteur >= 0; compteur--)
 {
 espace[compteur] = (partie_entier % 10) + '0';
+partie_entier /= 10;
 }
 write(1, espace, longueur);
-if (partie_decimal > 0)
+}
+if (partie_decimale > 0)
 {
 write(1, ".", 1);
 for (compteur = 0; compteur < 6; compteur++)
 {
-partie_decimal *= 10;
-espace[0] = (partie_decimal % 10) + '0';
+partie_decimale *= 10;
+chiffre = (int)partie_decimale;
+espace[0] = chiffre + '0';
 write(1, &espace[0], 1);
+partie_decimale -= chiffre;
 }
 }
-return (longueur);
+return (longueur + 7);
 }
