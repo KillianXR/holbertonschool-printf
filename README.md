@@ -6,15 +6,15 @@ Description du Projet
 
 Le fichier _printf.c est une réimplémentation simplifiée de la fonction printf en C. Cette fonction permet d'afficher une chaîne de caractères, y compris des caractères spéciaux tels qu'un caractère individuel, une chaîne, un pourcentage, un nombre entier ou un nombre décimal.
 
-Exemple d'Utilisation
+Voici quelques exemples d'utilisation de la fonction `_printf` :
 
-Voici quelques exemples d'utilisation de la fonction _printf :
-
+```c
 _printf("Caractère: %c\n", 'A'); // Affichage d'un caractère
 _printf("Chaîne: %s\n", "Bonjour"); // Affichage d'une chaîne de caractères
 _printf("Pourcentage: %%\n"); // Affichage d'un pourcentage
 _printf("Entier: %d\n", 12345); // Affichage d'un entier
 _printf("Décimal: %d.%d\n", 123, 45); // Affichage d'un nombre décimal
+
 
 Difficultés Rencontrées
 
@@ -26,16 +26,6 @@ Ce projet a été réalisé par Gabriel Bescond et Killian Lemoine, avec l'aide 
 
 Description du Projet
 Le fichier _printf.c est une réimplémentation simplifiée de la fonction printf en C. Cette fonction permet d'afficher une chaîne de caractères, y compris des caractères spéciaux tels qu'un caractère individuel, une chaîne, un nombre entier ou un nombre décimal.
-
-Exemple d'Utilisation
-Voici quelques exemples d'utilisation de la fonction _printf :
-
-c
-_printf("Caractère: %c\n", 'A'); // Affichage d'un caractère
-_printf("Chaîne: %s\n", "Bonjour"); // Affichage d'une chaîne de caractères
-_printf("Pourcentage: %%\n"); // Affichage d'un pourcentage
-_printf("Entier: %d\n", 12345); // Affichage d'un entier
-_printf("Décimal: %d.%d\n", 123, 45); // Affichage d'un nombre décimal
 
 Difficultés Rencontrées
 
