@@ -1,35 +1,162 @@
-Projet _printf.c
+Project: C - printf
 
-Ce projet a été réalisé par Gabriel Bescond et Killian Lemoine, avec l'aide précieuse de deux SWE, Arthur et Mathieu.
+Project Description
 
-Description du Projet
+The project consists of writing a custom implementation of the printf function in C, called _printf. This function mimics the behavior of the standard printf but supports a limited set of format specifiers. The task was to create a function capable of handling format specifiers such as %c, %s, %d, %i, and %, using function pointers to handle each specifier.
 
-Le fichier _printf.c est une réimplémentation simplifiée de la fonction printf en C. Cette fonction permet d'afficher une chaîne de caractères, y compris des caractères spéciaux tels qu'un caractère individuel, une chaîne, un pourcentage, un nombre entier ou un nombre décimal.
+The _printf function reads a format string and processes it, printing the corresponding output for each valid specifier. It makes use of variable arguments through the stdarg.h library to process input and print the desired characters or values to the standard output.
 
-Voici quelques exemples d'utilisation de la fonction `_printf` :
+Function Overview
 
-```c
-_printf("Caractère: %c\n", 'A'); /* Affichage d'un caractère */
-_printf("Chaîne: %s\n", "Bonjour"); /* Affichage d'une chaîne de caractères */
-_printf("Pourcentage: %%\n"); /* Affichage d'un pourcentage */
-_printf("Entier: %d\n", 12345); /* Affichage d'un entier */
-_printf("Décimal: %d.%d\n", 123, 45); /* Affichage d'un nombre décimal */
+_printf Function
+
+The _printf function is the main function responsible for outputting the formatted string. It takes in a format string and a variable number of arguments. The function uses a loop to iterate over the characters of the format string and checks for the % character, indicating a format specifier. For each valid specifier, the corresponding function is called via function pointers. The function keeps track of the number of characters printed and returns this value at the end.
+
+Format Specifiers
+
+The following format specifiers are supported:
+```
+    %c – Print a single character.
+    %s – Print a string.
+    %% – Print the percent sign.
+    %d – Print an integer as a decimal.
+    %i – Print an integer in base 10.
+```
+Each of these specifiers is associated with a specific function, which is invoked using a function pointer defined in a structure. The structure holds the specifier character and the function to be called for that specifier.
+
+Compilation Command
+
+To compile the project, use the following command:
+```
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 ```
 
-Difficultés Rencontrées
+This command will compile all the .c files in the project directory, ensuring that the code adheres to strict C standards and prevents common errors.
 
-Tout au long de ce projet, nous avons rencontré plusieurs difficultés :
+Requirements
 
-Indentation des Blocs : Nous avons dû faire face à des problèmes d'indentation, ce qui rendait le code difficile à lire et à déboguer.
+To run this project, the following environment is required:
 
-Syntaxe Manquante : Des erreurs de syntaxe sont survenues, souvent dues à l'omission de caractères essentiels.
+    Operating System: Ubuntu 20.04 LTS (or a similar Linux distribution)
+    Compiler: GCC (GNU Compiler Collection), version 8 or higher
+    Libraries: stdarg.h for handling variable arguments
+    Git: For version control and repository management
 
-Ordre des Lignes de Code : Une mauvaise organisation des lignes de code a entraîné des comportements inattendus du programme.
+Additionally, ensure that you have access to a terminal and the necessary permissions to compile and execute code.
 
+Usage Examples
+
+Here are some examples of using the _printf function, followed by the expected output on the standard output.
+
+Example 1: Print a simple string
+```c
+int len = _printf("Hello, world!\n");
+printf("Length: %d\n", len);
+```
+Output:
+```c
+Hello, world!
+Length: 14
+```
+Example 2: Print an integer
+```c
+int len = _printf("The number is: %d\n", 42);
+printf("Length: %d\n", len);
+```
+Output:
+```c
+The number is: 42
+Length: 21
+```
+Example 3: Print a string with a character
+```c
+int len = _printf("Character: %c, String: %s\n", 'A', "Test");
+printf("Length: %d\n", len);
+```
+Output:
+```c
+Character: A, String: Test
+Length: 20
+```
+Example 4: Print percentage sign
+```c
+int len = _printf("This is a percent: %%\n");
+printf("Length: %d\n", len);
+```
+Output:
+```c
+This is a percent: %
+Length: 23
+```
+
+Man Page
+
+Here is a basic man page describing how to use _printf:
+NAME
+
+_printf - outputs formatted text to the standard output
+
+SYNOPSIS
+```c
+int _printf(const char *format, ...);
+```
+DESCRIPTION
+
+The _printf function sends formatted output to stdout. It processes the format string and uses the corresponding functions for each specifier to output the correct content. It supports the following specifiers:
+```c
+    %c – print a single character.
+    %s – print a string.
+    %% – print a literal percent symbol.
+    %d – print an integer in base 10.
+    %i – print an integer in base 10.
+```
+RETURN VALUE
+
+The function returns the total number of characters printed, excluding the null byte used to end output to strings.
+
+EXAMPLES
+```c
+_printf("Hello, world!\n");
+_printf("Integer: %d\n", 42);
+_printf("Character: %c, String: %s\n", 'A', "Test");
+_printf("Percentage sign: %%\n");
+```
+
+Testing
+
+To test the _printf function, we used various cases to check for correct functionality. We tested:
+
+    Different specifiers (%c, %s, %d, %i, %%).
+    Handling edge cases such as zero-length strings and large numbers.
+    Comparing the output with the standard printf to ensure consistency.
+
+Additionally, we ran tests using Valgrind to check for memory leaks and errors in the code:
+```
+valgrind --leak-check=full ./printf
+```
+Valgrind reports were clean, meaning no memory leaks were found.
+
+Example Testing Code
+```c
+int len = _printf("Hello, %s! The answer is %d.\n", "World", 42);
+```
+Expected Output:
+```c
+Hello, World! The answer is 42.
+```
 Flowchart
 
-Voici un lien renvoyant un flowchart illustrant la conception de notre fonction _printf :
+Here is a flowchart depicting the structure of the _printf function:
 
 https://drive.google.com/file/d/16ALs7wof_uIHiOAzGPEqnSzPlkoPLl0b/view?usp=sharing
 
-Nous avons collaboré main dans la main pour mener à bien ce projet, partageant équitablement les responsabilités et nous soutenant mutuellement à chaque étape du développement. Que ce soit pour la conception initiale, l'implémentation du code, ou la phase de débogage, nous avons travaillé de manière synchronisée et harmonieuse, faisant preuve d'une grande cohésion d'équipe et d'une communication efficace tout au long du processus.
+Acknowledgements
+
+    Gabriel Bescond (author of the README)
+    Killian Lemoine (author of the man page)
+    Arthur and Mathieu (helped with the function design)
+    Brahim Haddad (collaborated on the development of additional functions)
+
+Challenges
+
+The main difficulty encountered during the development of the project was related to indentation and ensuring proper formatting of code blocks. This was especially challenging in sections where nested loops and conditional checks were used to handle the format string and the variable arguments.
