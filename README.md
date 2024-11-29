@@ -1,12 +1,20 @@
 Project: C - printf
+
 Project Description
+
 The project consists of writing a custom implementation of the printf function in C, called _printf. This function mimics the behavior of the standard printf but supports a limited set of format specifiers. The task was to create a function capable of handling format specifiers such as %c, %s, %d, %i, and %, using function pointers to handle each specifier.
+
 The _printf function reads a format string and processes it, printing the corresponding output for each valid specifier. It makes use of variable arguments through the stdarg.h library to process input and print the desired characters or values to the standard output.
+
 Function Overview
+
 _printf Function
+
 The _printf function is the main function responsible for outputting the formatted string. It takes in a format string and a variable number of arguments. The function uses a loop to iterate over the characters of the format string and checks for the % character, indicating a format specifier. For each valid specifier, the corresponding function is called via function pointers. The function keeps track of the number of characters printed and returns this value at the end.
 Format Specifiers
+
 The following format specifiers are supported:
+
 ```
     %c – Print a single character.
     %s – Print a string.
