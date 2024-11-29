@@ -117,10 +117,14 @@ Hello, World! The answer is 42.
 Flowchart
 Here is a flowchart depicting the structure of the _printf function:
 https://drive.google.com/file/d/16ALs7wof_uIHiOAzGPEqnSzPlkoPLl0b/view?usp=sharing
+
 Acknowledgements
+
     Gabriel Bescond (author of the README)
     Killian Lemoine (author of the man page)
     Arthur and Mathieu (helped with the function design)
     Brahim Haddad (collaborated on the development of additional functions)
+
 Challenges
+
 The main difficulty encountered during the development of the project was related to indentation and ensuring proper formatting of code blocks. This was especially challenging in sections where nested loops and conditional checks were used to handle the format string and the variable arguments.
